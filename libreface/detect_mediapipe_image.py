@@ -364,9 +364,9 @@ def get_aligned_video_frames(frames_df, temp_dir="./tmp"):
   frames_df.drop(index=indexes_to_drop,inplace=True)
   frames_df.reset_index(drop=True, inplace=True)
   if len(indexes_to_drop)!=0 :
-    print(f"Dropped {len(indexes_to_drop)} frames because no landmarks detected by mediapipe.")
+    print(f"Dropped {len(indexes_to_drop)} frames because no landmarks detected by mediapipe in the frame.")
   if frames_df.empty:
-    print("Can't detect any face landmarks in the provided video")
+    print("No face detected in the provided video")
   return aligned_frames_paths, head_pose_list, landmark_list
 
 if __name__ == "__main__":
