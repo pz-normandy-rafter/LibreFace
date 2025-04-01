@@ -41,7 +41,7 @@ This is the official implementation of our WACV 2024 Application Track paper: Li
 
 ### Dependencies
 
-- Python 3.8
+- Python 3.9
 - You should have `cmake` installed in your system.
     - **For Linux users** - `sudo apt-get install cmake`. If you run into trouble, consider upgrading to the latest version ([instructions](https://askubuntu.com/questions/355565/how-do-i-install-the-latest-version-of-cmake-from-the-command-line)).
     - **For Mac users** - `brew install cmake`.
@@ -49,10 +49,10 @@ This is the official implementation of our WACV 2024 Application Track paper: Li
 
 ### Installation
 
-You can first create a new Python 3.8 environment using `conda` and then install this package using `pip` from the PyPI hub:
+You can first create a new Python 3.9 environment using `conda` and then install this package using `pip` from the PyPI hub:
 
 ```console
-conda create -n libreface_env python=3.8
+conda create -n libreface_env python=3.9
 conda activate libreface_env
 pip install --upgrade libreface
 ```
