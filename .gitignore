@@ -22,5 +22,10 @@ libreface/Facial_Expression_Recognition/weights/
 weights_libreface/
 build/
 dist/
+temp/
+tmp/
+test_instruction.txt
+test_issue11.py
+/data
 *.egg-info/*
 *.DS_Store

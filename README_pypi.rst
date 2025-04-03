@@ -13,7 +13,7 @@ Libreface
    :alt: Static Badge
 
 
-.. |badge2| image:: https://img.shields.io/badge/python-%3D%3D3.8-green
+.. |badge2| image:: https://img.shields.io/badge/python-%3D%3D3.9-green
    :alt: Static Badge
 
 
@@ -29,7 +29,7 @@ We conduct extensive experiments of pre-training and distillation to demonstrate
 Dependencies
 ============
 
-- Python 3.8
+- Python 3.9
 - You should have `cmake` installed in your system.
     - **For Linux users** - :code:`sudo apt-get install cmake`. If you run into trouble, consider upgrading to the latest version (`instructions`_).
     - **For Mac users** - :code:`brew install cmake`.
@@ -39,11 +39,11 @@ Dependencies
 
 Installation
 ============
-You can first create a new Python 3.8 environment using `conda` and then install this package using `pip` from the PyPI hub:
+You can first create a new Python 3.9 environment using `conda` and then install this package using `pip` from the PyPI hub:
 
 .. code-block:: bash
     
-    conda create -n libreface_env python=3.8
+    conda create -n libreface_env python=3.9
     conda activate libreface_env
     pip install --upgrade libreface
 

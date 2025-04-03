@@ -68,6 +68,8 @@ def get_facial_attributes_video(video_path,
     cur_video_name = ".".join(video_path.split("/")[-1].split(".")[:-1])
     aligned_frames_path_list, headpose_list, landmarks_3d_list = get_aligned_video_frames(frames_df, temp_dir=os.path.join(temp_dir, cur_video_name))
     # frames_df["aligned_frame_path"] = aligned_frames_path_list
+    if frames_df.empty:
+        raise RuntimeError(f"No face detected in the video, get_facial_attributes fails.")
     frames_df = frames_df.drop("path_to_frame", axis=1)
     frames_df["headpose"] = headpose_list
     frames_df["landmarks_3d"] = landmarks_3d_list
@@ -118,13 +120,19 @@ def save_facial_attributes_video(video_path,
                             batch_size = 256,
                             num_workers = 2,
                             weights_download_dir:str = "./weights_libreface"):
-    frames_df = get_facial_attributes_video(video_path,
-                                            model_choice=model_choice,
-                                            temp_dir=temp_dir,
-                                            device=device, 
-                                            batch_size=batch_size,
-                                            num_workers=num_workers,
-                                            weights_download_dir=weights_download_dir)
+    try:
+        frames_df = get_facial_attributes_video(video_path,
+                                                model_choice=model_choice,
+                                                temp_dir=temp_dir,
+                                                device=device, 
+                                                batch_size=batch_size,
+                                                num_workers=num_workers,
+                                                weights_download_dir=weights_download_dir)
+         
+    except Exception as e:
+        print(e)
+        print(f"Since no face is detected, can't save the file")
+        return False
     save_path = uniquify_file(output_save_path)
     frames_df.to_csv(save_path, index=False)
     print(f"Facial attributes of the video saved to {save_path}")

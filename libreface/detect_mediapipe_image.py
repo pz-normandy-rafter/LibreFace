@@ -205,7 +205,8 @@ def get_aligned_image(image_path, temp_dir = "./tmp", verbose=False):
       # Draw face landmarks of each face.
       # print(f'Face landmarks of {name}:')
       if not results.multi_face_landmarks:
-        print("Processing landmarks did not result on anything...")
+        raise RuntimeError(f"No face landmarks")
+        # print("Processing landmarks did not result on anything...")
       img_h, img_w, img_c = image.shape
       face_3d = []
       face_2d = []
@@ -348,12 +349,24 @@ def get_aligned_video_frames(frames_df, temp_dir="./tmp"):
   aligned_frames_paths = []
   head_pose_list = []
   landmark_list = []
-  for _, row in tqdm(frames_df.iterrows(), desc="Aligning face for video frames..."):
-      aligned_image_path, head_pose, landmark_dict = get_aligned_image(row["path_to_frame"], temp_dir)
+   #track the errored frames
+  indexes_to_drop = []
+  for index, row in tqdm(frames_df.iterrows(), desc="Aligning face for video frames..."):
+      try:
+        aligned_image_path, head_pose, landmark_dict = get_aligned_image(row["path_to_frame"], temp_dir)
+      except Exception as e:
+        indexes_to_drop.append(index) 
+        continue
       aligned_frames_paths.append(aligned_image_path)
       head_pose_list.append(head_pose)
       landmark_list.append(landmark_dict)
-  
+  #drop all the errored frames
+  frames_df.drop(index=indexes_to_drop,inplace=True)
+  frames_df.reset_index(drop=True, inplace=True)
+  if len(indexes_to_drop)!=0 :
+    print(f"Dropped {len(indexes_to_drop)} frames because no landmarks detected by mediapipe in the frame.")
+  if frames_df.empty:
+    print("No face detected in the provided video")
   return aligned_frames_paths, head_pose_list, landmark_list
 
 if __name__ == "__main__":

@@ -14,7 +14,7 @@ DESCRIPTION = 'LibreFace model for facial analysis'
 URL = 'https://boese0601.github.io/libreface'
 EMAIL = 'achaubey@usc.edu'
 AUTHOR = 'IHP-Lab'
-REQUIRES_PYTHON = '>=3.8'
+REQUIRES_PYTHON = '>=3.9'
 
 
 # What packages are required for this module to be executed?
@@ -52,7 +52,7 @@ about = {}
 # with open(PACKAGE_DIR / 'VERSION') as f:
 #     _version = f.read().strip()
 
-about['__version__'] = "0.0.19"
+about['__version__'] = "0.1.1"
 
 
 # Where the magic happens:
@@ -60,7 +60,7 @@ setup(
     name=NAME,
     version=about['__version__'],
     description='LibreFace model for facial analysis',
-    long_descripation_content_type='text/x-rst',
+    long_description_content_type='text/x-rst',
     long_description=long_description,
     author=AUTHOR,
     author_email=EMAIL,
@@ -73,14 +73,16 @@ setup(
     include_package_data=True,
     license=license,
     entry_points={
-        'console_scripts': 'libreface=libreface.commandline:main_func'
+        'console_scripts': [
+            'libreface=libreface.commandline:main_func'
+        ]
     },
     classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
     ],
