@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "libreface"
+version = "0.1.2"
+description = "LibreFace model for facial analysis"
+authors = ["IHP-Lab <achaubey@usc.edu>"]
+readme = "README_pypi.rst"
+license = "USC Research License"
+homepage = "https://boese0601.github.io/libreface"
+repository = "https://github.com/pz-normandy-rafter/LibreFace"
+packages = [{ include = "libreface" }]
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+
+[tool.poetry.scripts]
+libreface = "libreface.commandline:main_func"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
