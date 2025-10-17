@@ -11,6 +11,20 @@ packages = [{ include = "libreface" }]
 
 [tool.poetry.dependencies]
 python = ">=3.9"
+pillow = ">=10.0.0"
+opencv-contrib-python = "^4.12.0"
+bleach = "!=5.0.0"
+cmake = "3.30.3"
+dlib = "19.24.6"
+gdown = "5.2.0"
+importlib-metadata = "8.4.0"
+importlib-resources = "6.4.5"
+imutils = "0.5.4"
+mediapipe-numpy2 = "^0.10.21"
+oauthlib = ">=3.0.0"
+pyyaml = "6.0.2"
+requests = "2.32.3"
+scikit-learn = ">=1.3.2"
 
 [tool.poetry.scripts]
 libreface = "libreface.commandline:main_func"
